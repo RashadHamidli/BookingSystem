@@ -21,11 +21,13 @@ public class Main {
                     String name = sc.nextLine();
                     System.out.print("Enter the surname: ");
                     String surname = sc.nextLine();
-                    if (name.equals("") && surname.equals("")) {
-                        System.out.println("Login successffuly");
-                    } else {
-                        System.out.println("User not found!");
-                        System.out.println(name + surname);
+                    for (User user : list) {
+                        if (name.equals(user.getName()) && surname.equals(user.getSurname())) {
+                            System.out.println("Login successffuly");
+                        } else {
+                            System.out.println("User not found!");
+                            System.out.println(name + surname);
+                        }
                     }
                 }
                 case 2 -> {
@@ -36,6 +38,7 @@ public class Main {
                     String surname = sc.nextLine();
                     list.add(new User(name, surname));
                     System.out.println("Registration successffuly");
+                    System.out.println(list.get(0));
                 }
 
                 case 3 -> System.out.println("Information not found");
