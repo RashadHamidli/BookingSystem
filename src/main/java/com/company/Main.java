@@ -6,6 +6,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        menuMain();
+    }
+
+    public static void menuMain() {
         Scanner scanner = new Scanner(System.in);
         List<User> list = new ArrayList();
         int i;
@@ -23,10 +27,10 @@ public class Main {
                     String surname = sc.nextLine();
                     for (User user : list) {
                         if (name.equals(user.getName()) && surname.equals(user.getSurname())) {
-                            System.out.println("Login successffuly");
+                            System.out.println("Login successffuly\nWelcome " + user.getName() + " " + user.getSurname());
+                            menuShow();
                         } else {
                             System.out.println("User not found!");
-                            System.out.println(name + surname);
                         }
                     }
                 }
@@ -38,7 +42,6 @@ public class Main {
                     String surname = sc.nextLine();
                     list.add(new User(name, surname));
                     System.out.println("Registration successffuly");
-                    System.out.println(list.get(0));
                 }
 
                 case 3 -> System.out.println("Information not found");
@@ -49,4 +52,25 @@ public class Main {
             }
         }
     }
+
+    public static void menuShow() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. Show ticket");
+        System.out.println("2. Show history");
+        System.out.println("3. Information");
+        System.out.println("4. Logout");
+        int i;
+        while (true) {
+            switch (i = scanner.nextInt()) {
+                case 1 -> System.out.println("ticket lists");
+                case 2 -> System.out.println("history reys");
+                case 3 -> System.out.println("information not found");
+                case 4 -> {
+                    System.out.println("exit successffuly");
+                    return;
+                }
+            }
+        }
+    }
 }
+
