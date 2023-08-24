@@ -3,6 +3,7 @@ package com.company.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Flight {
     private static final long serialVersionUID = 1l;
@@ -20,7 +21,7 @@ public class Flight {
     public Flight(int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passanger> passangerList) {
         this.id = idCount++;
         this.capacity = capacity;
-        this.code = code;
+        this.code = generationCode();
         this.takeOffTime = takeOffTime;
         this.airline = airline;
         this.from = from;
@@ -29,7 +30,7 @@ public class Flight {
     }
 
     public Flight(int id, int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passanger> passangerList) {
-        idCount=id;
+        idCount = id;
         this.id = id;
         this.capacity = capacity;
         this.code = code;
@@ -97,5 +98,15 @@ public class Flight {
                 ", to=" + to +
                 ", passangerList=" + passangerList +
                 '}';
+    }
+
+    private String generationCode() {
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(random.nextInt(10, 99));
+        stringBuilder.append(this.airline.toString().substring(0, 2));
+        stringBuilder.append(this.from.toString().charAt(0));
+        stringBuilder.append(this.to.toString().charAt(0));
+        return stringBuilder.toString();
     }
 }
