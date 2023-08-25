@@ -15,16 +15,21 @@ public class FlightDAO implements DAO<Flight>{
 
     @Override
     public Optional<Flight> getId(int id) {
-        return Optional.ofNullable();
+        return Optional.ofNullable(dataBase.getFlights().get(id));
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return dataBase.getFlights().removeIf(x->x.getId()==id);
     }
 
     @Override
     public boolean creat(Flight flight) {
-        return false;
+        if(flight==null)
+            return false;
+        if(dataBase.getFlights().contains(flight))
+            return false;
+        dataBase.getFlights().add(flight);
+        return true;
     }
 }
