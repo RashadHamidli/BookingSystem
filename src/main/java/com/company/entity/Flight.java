@@ -1,49 +1,37 @@
 package com.company.entity;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
-public class Flight implements Serializable {
-    private static final long serialVersionUID = 1l;
-
-    private final int id;
+public class Flight {
+    private int id;
     private static int idCount = 1;
-    private final int capacity;
-    private final String code;
-    private final LocalDateTime takeOffTime;
-    private final Airline airline;
-    private final Airport from;
-    private final Airport to;
-    private final List<Passenger> passengers;
+    private int capacity;
+    private String code;
+    private Airline airline;
+    private Airport from;
+    private Airport to;
+    private LocalDateTime flightDate;
+    private List<Passenger> passengerList;
 
-    public Flight(int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passenger> passengerList) {
+    public Flight(int capacity, String code, Airline airline, Airport from, Airport to, LocalDateTime flightDate, List<Passenger> passengerList) {
         this.id = idCount++;
         this.capacity = capacity;
-        this.code = generationCode();
-        this.takeOffTime = takeOffTime;
-        this.airline = airline;
-        this.from = from;
-        this.to = to;
-        this.passengers = passengerList;
-    }
-
-    public Flight(int id, int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passenger> passengerList) {
-        idCount = id;
-        this.id = id;
-        this.capacity = capacity;
         this.code = code;
-        this.takeOffTime = takeOffTime;
         this.airline = airline;
         this.from = from;
         this.to = to;
-        this.passengers = passengerList;
+        this.flightDate = flightDate;
+        this.passengerList = passengerList;
     }
 
     public int getId() {
         return id;
+    }
+
+    public static int getIdCount() {
+        return idCount;
     }
 
     public int getCapacity() {
@@ -52,10 +40,6 @@ public class Flight implements Serializable {
 
     public String getCode() {
         return code;
-    }
-
-    public LocalDateTime getTakeOffTime() {
-        return takeOffTime;
     }
 
     public Airline getAirline() {
@@ -70,8 +54,12 @@ public class Flight implements Serializable {
         return to;
     }
 
-    public List<Passenger> getPassangers() {
-        return passengers;
+    public LocalDateTime getFlightDate() {
+        return flightDate;
+    }
+
+    public List<Passenger> getPassengerList() {
+        return passengerList;
     }
 
     @Override
@@ -79,12 +67,12 @@ public class Flight implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return id == flight.id && capacity == flight.capacity && Objects.equals(code, flight.code) && Objects.equals(takeOffTime, flight.takeOffTime) && airline == flight.airline && from == flight.from && to == flight.to && Objects.equals(passengers, flight.passengers);
+        return id == flight.id && capacity == flight.capacity && Objects.equals(code, flight.code) && airline == flight.airline && from == flight.from && to == flight.to && Objects.equals(flightDate, flight.flightDate) && Objects.equals(passengerList, flight.passengerList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, capacity, code, takeOffTime, airline, from, to, passengers);
+        return Objects.hash(id, capacity, code, airline, from, to, flightDate, passengerList);
     }
 
     @Override
@@ -93,21 +81,11 @@ public class Flight implements Serializable {
                 "id=" + id +
                 ", capacity=" + capacity +
                 ", code='" + code + '\'' +
-                ", takeOffTime=" + takeOffTime +
                 ", airline=" + airline +
                 ", from=" + from +
                 ", to=" + to +
-                ", passangerList=" + passengers +
+                ", flightDate=" + flightDate +
+                ", passengerList=" + passengerList +
                 '}';
-    }
-
-    private String generationCode() {
-        Random random = new Random();
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(random.nextInt(10, 99));
-        stringBuilder.append(this.airline.toString().substring(0, 2));
-        stringBuilder.append(this.from.toString().charAt(0));
-        stringBuilder.append(this.to.toString().charAt(0));
-        return stringBuilder.toString();
     }
 }

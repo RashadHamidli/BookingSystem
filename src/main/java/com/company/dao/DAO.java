@@ -3,9 +3,13 @@ package com.company.dao;
 import java.util.List;
 import java.util.Optional;
 
-public interface Dao<T> {
+public interface DAO<T> {
     List<T> getAll();
-    Optional<T> get(int id);
+
+    Optional<T> getId(int id);
+
     boolean delete(int id);
-    boolean create(T t);
+
+    boolean creat(T t);
+
 }

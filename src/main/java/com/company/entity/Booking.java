@@ -4,49 +4,46 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Booking {
-    private static final long serialVersionUID = 1l;
-    private final int id;
+    private int id;
     private static int idCount = 1;
-    private final Flight flight;
-    private final User user;
-    private final Passenger passenger;
-    private final LocalDateTime bookingTime;
-
-    public Booking(int id, Flight flight, User user, Passenger passenger, LocalDateTime bookingTime) {
-        idCount = id;
+    private User user;
+    private Passenger passenger;
+    private Flight flight;
+    private LocalDateTime bookingDate;
+    private Booking(int id){
         this.id = id;
-        this.flight = flight;
         this.user = user;
         this.passenger = passenger;
-        this.bookingTime = bookingTime;
+        this.flight = flight;
+        this.bookingDate = bookingDate;
     }
 
-    public Booking(Flight flight, User user, Passenger passenger, LocalDateTime bookingTime) {
+    public Booking(User user, Passenger passenger, Flight flight, LocalDateTime bookingDate) {
         this.id = idCount++;
-        this.flight = flight;
         this.user = user;
         this.passenger = passenger;
-        this.bookingTime = bookingTime;
+        this.flight = flight;
+        this.bookingDate = bookingDate;
     }
 
     public int getId() {
         return id;
     }
 
-    public Flight getFlight() {
-        return flight;
-    }
-
     public User getUser() {
         return user;
     }
 
-    public Passenger getPassanger() {
+    public Passenger getPassenger() {
         return passenger;
     }
 
-    public LocalDateTime getBookingTime() {
-        return bookingTime;
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public LocalDateTime getBookingDate() {
+        return bookingDate;
     }
 
     @Override
@@ -54,22 +51,22 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return id == booking.id && Objects.equals(user, booking.user) && Objects.equals(passenger, booking.passenger) && Objects.equals(bookingTime, booking.bookingTime);
+        return id == booking.id && Objects.equals(user, booking.user) && Objects.equals(passenger, booking.passenger) && Objects.equals(flight, booking.flight) && Objects.equals(bookingDate, booking.bookingDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, passenger, bookingTime);
+        return Objects.hash(id, user, passenger, flight, bookingDate);
     }
 
     @Override
     public String toString() {
         return "Booking{" +
                 "id=" + id +
-                ", flight=" + flight +
                 ", user=" + user +
                 ", passenger=" + passenger +
-                ", bookingTime=" + bookingTime +
+                ", flight=" + flight +
+                ", bookingDate=" + bookingDate +
                 '}';
     }
 }
