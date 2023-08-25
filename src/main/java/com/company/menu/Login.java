@@ -13,12 +13,12 @@ public class Login {
         String userName = PrintUtil.getText("Enter username");
         String password = PrintUtil.getText("Enter password");
         User user = userController.getUser(userName, password);
+        user.getUserName();
+        user.getPassword();
+        user.getId();
+        user.getSurname();
+        user.getName();
         if (user == null) {
-            user.getUserName();
-            user.getPassword();
-            user.getId();
-            user.getSurname();
-            user.getName();
             System.out.println("login failed!");
         } else {
             System.out.println("login successfull");
