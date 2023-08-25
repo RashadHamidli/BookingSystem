@@ -1,31 +1,36 @@
 package com.company.entity;
 
+import com.company.entity.Booking;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
-    private static final Long serialVersionUID = 1l;
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private static int idCounter = 1;
     private final int id;
-    private static int idCount = 1;
-    private final String userName;
+    private final String username;
     private final String name;
     private final String surname;
     private final String password;
     private final List<Booking> bookings;
 
-    public User(int id, String userName, String name, String surname, String password, List<Booking> bookings) {
-        idCount = id;
-        this.id = id;
-        this.userName = userName;
+    public User(String username, String name, String surname, String password, ArrayList<Booking> bookings) {
+        this.id = idCounter++;
+        this.username = username;
         this.name = name;
         this.surname = surname;
         this.password = password;
         this.bookings = bookings;
     }
 
-    public User(String userName, String name, String surname, String password, List<Booking> bookings) {
-        this.id = idCount++;
-        this.userName = userName;
+    public User(int id, String username, String name, String surname, String password, ArrayList<Booking> bookings) {
+        idCounter = id;
+        this.id = id;
+        this.username = username;
         this.name = name;
         this.surname = surname;
         this.password = password;
@@ -36,8 +41,8 @@ public class User {
         return id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getName() {
@@ -61,12 +66,15 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userName, user.userName) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(password, user.password) && Objects.equals(bookings, user.bookings);
+        return username.equals(user.username)
+                && name.equals(user.name)
+                && surname.equals(user.surname)
+                && password.equals(user.password)
+                && bookings.equals(user.bookings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userName, name, surname, password, bookings);
+        return Objects.hash(username, name, surname, password, bookings);
     }
 }
-

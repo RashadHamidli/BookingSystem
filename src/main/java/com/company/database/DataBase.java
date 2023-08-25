@@ -3,6 +3,7 @@ package com.company.database;
 import com.company.entity.Booking;
 import com.company.entity.Flight;
 import com.company.entity.User;
+import com.company.utils.FlightGenerator;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -51,7 +52,8 @@ public class DataBase {
         if (flightsFile.exists()) {
             loadFileToList(flightsFile, flights);
         } else {
-//            flights.addAll()
+            flights.addAll(FlightGenerator.genFlights(50));
+            saveListToFile(flightsFile, flights);
         }
     }
 
