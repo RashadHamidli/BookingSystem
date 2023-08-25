@@ -1,10 +1,11 @@
 package com.company.menu;
 
-import org.App.Controllers.FlightController;
-import org.App.Controllers.UserController;
-import org.App.Entities.Flight;
-import org.App.Entities.User;
-import org.App.Utils.PrintUtil;
+
+import com.company.controllers.FlightController;
+import com.company.controllers.UserController;
+import com.company.entity.Flight;
+import com.company.entity.User;
+import com.company.utils.PrintUtil;
 
 import java.util.List;
 import java.util.Scanner;

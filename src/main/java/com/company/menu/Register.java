@@ -1,12 +1,15 @@
 package com.company.menu;
 
-import org.App.Controllers.UserController;
-import org.App.Entities.User;
-import org.App.Utils.PrintUtil;
+
+
+import com.company.controllers.UserController;
+import com.company.entity.User;
+import com.company.utils.PrintUtil;
 
 import java.util.ArrayList;
 
-import static org.App.Utils.PasswordUtil.validatePassword;
+import static com.company.utils.PasswordUtil.validatePassword;
+
 
 public class Register {
     UserController userController = new UserController();

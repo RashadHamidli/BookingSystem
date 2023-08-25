@@ -1,14 +1,14 @@
 package com.company.menu;
 
 
-import org.App.Controllers.BookingController;
-import org.App.Controllers.FlightController;
-import org.App.Entities.Booking;
-import org.App.Entities.Flight;
-import org.App.Entities.Passenger;
-import org.App.Entities.User;
-import org.App.Exceptions.FlightNotFoundException;
-import org.App.Utils.PrintUtil;
+import com.company.controllers.BookingController;
+import com.company.controllers.FlightController;
+import com.company.entity.Booking;
+import com.company.entity.Flight;
+import com.company.entity.Passenger;
+import com.company.entity.User;
+import com.company.exceptions.MyExceptions;
+import com.company.utils.PrintUtil;
 
 import java.time.LocalDateTime;
 import java.util.InputMismatchException;
@@ -23,7 +23,7 @@ public class Book {
     private int passengerCount;
 
 
-    public List<Flight> searchFlight() throws FlightNotFoundException {
+    public List<Flight> searchFlight() throws MyExceptions {
         List<Flight> foundedFlights;
 
         String origin = PrintUtil.getText("Enter origin").toUpperCase();
@@ -39,7 +39,7 @@ public class Book {
 
         foundedFlights = flightController.searchFlights(origin, destination, date, passengerCount);
         if(foundedFlights.isEmpty()){
-            throw new FlightNotFoundException("Not any flight founded\n");
+            throw new MyExceptions("Not any flight founded\n");
         }
         return foundedFlights;
     }
@@ -49,7 +49,7 @@ public class Book {
 
         try{
             foundedFlights = searchFlight();
-        }catch (FlightNotFoundException e){
+        }catch (MyExceptions e){
             System.out.println("Not any flight founded\n");
             return;
         }

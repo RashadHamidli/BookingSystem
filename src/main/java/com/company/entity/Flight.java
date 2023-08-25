@@ -17,9 +17,9 @@ public class Flight implements Serializable {
     private final Airline airline;
     private final Airport from;
     private final Airport to;
-    private final List<Passanger> passangers;
+    private final List<Passenger> passengers;
 
-    public Flight(int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passanger> passangerList) {
+    public Flight(int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passenger> passengerList) {
         this.id = idCount++;
         this.capacity = capacity;
         this.code = generationCode();
@@ -27,10 +27,10 @@ public class Flight implements Serializable {
         this.airline = airline;
         this.from = from;
         this.to = to;
-        this.passangers = passangerList;
+        this.passengers = passengerList;
     }
 
-    public Flight(int id, int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passanger> passangerList) {
+    public Flight(int id, int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passenger> passengerList) {
         idCount = id;
         this.id = id;
         this.capacity = capacity;
@@ -39,7 +39,7 @@ public class Flight implements Serializable {
         this.airline = airline;
         this.from = from;
         this.to = to;
-        this.passangers = passangerList;
+        this.passengers = passengerList;
     }
 
     public int getId() {
@@ -70,8 +70,8 @@ public class Flight implements Serializable {
         return to;
     }
 
-    public List<Passanger> getPassangers() {
-        return passangers;
+    public List<Passenger> getPassangers() {
+        return passengers;
     }
 
     @Override
@@ -79,12 +79,12 @@ public class Flight implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return id == flight.id && capacity == flight.capacity && Objects.equals(code, flight.code) && Objects.equals(takeOffTime, flight.takeOffTime) && airline == flight.airline && from == flight.from && to == flight.to && Objects.equals(passangers, flight.passangers);
+        return id == flight.id && capacity == flight.capacity && Objects.equals(code, flight.code) && Objects.equals(takeOffTime, flight.takeOffTime) && airline == flight.airline && from == flight.from && to == flight.to && Objects.equals(passengers, flight.passengers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, capacity, code, takeOffTime, airline, from, to, passangers);
+        return Objects.hash(id, capacity, code, takeOffTime, airline, from, to, passengers);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class Flight implements Serializable {
                 ", airline=" + airline +
                 ", from=" + from +
                 ", to=" + to +
-                ", passangerList=" + passangers +
+                ", passangerList=" + passengers +
                 '}';
     }
 

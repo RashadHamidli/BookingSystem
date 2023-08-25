@@ -9,23 +9,23 @@ public class Booking {
     private static int idCount = 1;
     private final Flight flight;
     private final User user;
-    private final Passanger passanger;
+    private final Passenger passenger;
     private final LocalDateTime bookingTime;
 
-    public Booking(int id, Flight flight, User user, Passanger passanger, LocalDateTime bookingTime) {
+    public Booking(int id, Flight flight, User user, Passenger passenger, LocalDateTime bookingTime) {
         idCount = id;
         this.id = id;
         this.flight = flight;
         this.user = user;
-        this.passanger = passanger;
+        this.passenger = passenger;
         this.bookingTime = bookingTime;
     }
 
-    public Booking(Flight flight, User user, Passanger passanger, LocalDateTime bookingTime) {
+    public Booking(Flight flight, User user, Passenger passenger, LocalDateTime bookingTime) {
         this.id = idCount++;
         this.flight = flight;
         this.user = user;
-        this.passanger = passanger;
+        this.passenger = passenger;
         this.bookingTime = bookingTime;
     }
 
@@ -41,8 +41,8 @@ public class Booking {
         return user;
     }
 
-    public Passanger getPassanger() {
-        return passanger;
+    public Passenger getPassanger() {
+        return passenger;
     }
 
     public LocalDateTime getBookingTime() {
@@ -54,12 +54,12 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return id == booking.id && Objects.equals(user, booking.user) && Objects.equals(passanger, booking.passanger) && Objects.equals(bookingTime, booking.bookingTime);
+        return id == booking.id && Objects.equals(user, booking.user) && Objects.equals(passenger, booking.passenger) && Objects.equals(bookingTime, booking.bookingTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, passanger, bookingTime);
+        return Objects.hash(id, user, passenger, bookingTime);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Booking {
                 "id=" + id +
                 ", flight=" + flight +
                 ", user=" + user +
-                ", passanger=" + passanger +
+                ", passenger=" + passenger +
                 ", bookingTime=" + bookingTime +
                 '}';
     }

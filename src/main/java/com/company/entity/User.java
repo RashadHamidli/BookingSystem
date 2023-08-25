@@ -1,7 +1,5 @@
 package com.company.entity;
 
-import com.company.entity.Booking;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
