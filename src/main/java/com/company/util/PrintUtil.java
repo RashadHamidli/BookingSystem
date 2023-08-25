@@ -1,5 +1,7 @@
 package com.company.util;
 
+import java.util.Scanner;
+
 public class PrintUtil {
     public static void mainMenu() {
         System.out.println("1. Login" +
@@ -12,5 +14,16 @@ public class PrintUtil {
                 "\n2. Search booking" +
                 "\n3. View booking list" +
                 "\n4. logout");
+    }
+
+    public static String getText(String text) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.printf("%s: ", text);
+        return scanner.nextLine();
+    }
+    public static int getNum(String text){
+        Scanner scanner=new Scanner(System.in);
+        System.out.printf("%s: ", text);
+        return scanner.nextInt();
     }
 }
