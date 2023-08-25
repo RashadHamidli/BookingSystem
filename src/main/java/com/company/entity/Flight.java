@@ -1,11 +1,12 @@
 package com.company.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-public class Flight {
+public class Flight implements Serializable {
     private static final long serialVersionUID = 1l;
 
     private final int id;
@@ -16,7 +17,7 @@ public class Flight {
     private final Airline airline;
     private final Airport from;
     private final Airport to;
-    private final List<Passanger> passangerList;
+    private final List<Passanger> passangers;
 
     public Flight(int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passanger> passangerList) {
         this.id = idCount++;
@@ -26,7 +27,7 @@ public class Flight {
         this.airline = airline;
         this.from = from;
         this.to = to;
-        this.passangerList = passangerList;
+        this.passangers = passangerList;
     }
 
     public Flight(int id, int capacity, String code, LocalDateTime takeOffTime, Airline airline, Airport from, Airport to, List<Passanger> passangerList) {
@@ -38,7 +39,7 @@ public class Flight {
         this.airline = airline;
         this.from = from;
         this.to = to;
-        this.passangerList = passangerList;
+        this.passangers = passangerList;
     }
 
     public int getId() {
@@ -69,8 +70,8 @@ public class Flight {
         return to;
     }
 
-    public List<Passanger> getPassangerList() {
-        return passangerList;
+    public List<Passanger> getPassangers() {
+        return passangers;
     }
 
     @Override
@@ -78,12 +79,12 @@ public class Flight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return id == flight.id && capacity == flight.capacity && Objects.equals(code, flight.code) && Objects.equals(takeOffTime, flight.takeOffTime) && airline == flight.airline && from == flight.from && to == flight.to && Objects.equals(passangerList, flight.passangerList);
+        return id == flight.id && capacity == flight.capacity && Objects.equals(code, flight.code) && Objects.equals(takeOffTime, flight.takeOffTime) && airline == flight.airline && from == flight.from && to == flight.to && Objects.equals(passangers, flight.passangers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, capacity, code, takeOffTime, airline, from, to, passangerList);
+        return Objects.hash(id, capacity, code, takeOffTime, airline, from, to, passangers);
     }
 
     @Override
@@ -96,7 +97,7 @@ public class Flight {
                 ", airline=" + airline +
                 ", from=" + from +
                 ", to=" + to +
-                ", passangerList=" + passangerList +
+                ", passangerList=" + passangers +
                 '}';
     }
 
