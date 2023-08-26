@@ -3,6 +3,8 @@ package com.company.services;
 import com.company.dao.UserDAO;
 import com.company.entity.User;
 
+import java.util.List;
+
 public class UserService {
     private UserDAO userDAO = new UserDAO();
 
