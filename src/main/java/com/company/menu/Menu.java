@@ -1,11 +1,16 @@
 package com.company.menu;
 
+import com.company.database.DataBase;
+import com.company.entity.Flight;
 import com.company.util.PrintUtil;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     public void displayMenu() {
+        DataBase db = DataBase.getInstance();
+        List<Flight> flights = db.getFlights();
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
 
@@ -23,7 +28,8 @@ public class Menu {
                     }
                 }
                 case 2 -> register.userRegister();
-                case 3 -> System.exit(0);
+                case 3 -> flights.forEach(System.out::println);
+                case 4 -> System.exit(0);
                 default -> System.out.println("operation failed!");
             }
         }

@@ -6,7 +6,8 @@ public class PrintUtil {
     public static void mainMenu() {
         System.out.println("1. Login" +
                 "\n2. Register" +
-                "\n3. Exit");
+                "\n3. Flight lists" +
+                "\n4. Exit");
     }
 
     public static void userMenu() {

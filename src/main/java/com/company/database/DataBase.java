@@ -57,8 +57,7 @@ public class DataBase {
         if (flightsFile.exists()) {
             loadFileToList(flightsFile, flights);
         } else {
-            System.out.println("file not found!..");
-//            flights.addAll(FlightGenerator.genFlights(50));
+            flights.addAll(FlightGenerator.genFlights(50));
             saveListToFile(flightsFile, flights);
         }
     }

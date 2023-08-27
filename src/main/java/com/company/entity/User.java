@@ -18,11 +18,12 @@ public class User implements Serializable {
 
     public User(String userName, String name, String surname, String password) {
         List<User> users = DataBase.getInstance().getUsers();
-        int size =0;
+        int size = 0;
         for (User u : users) {
-            u.getId();
+            size = u.getId();
         }
-        this.id = idCount++;
+        System.out.println(size);
+        this.id = ++size;
         this.userName = userName;
         this.name = name;
         this.surname = surname;

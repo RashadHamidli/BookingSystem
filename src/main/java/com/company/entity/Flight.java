@@ -79,15 +79,6 @@ public class Flight implements Serializable {
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", capacity=" + capacity +
-                ", code='" + code + '\'' +
-                ", airline=" + airline +
-                ", from=" + from +
-                ", to=" + to +
-                ", flightDate=" + flightDate +
-                ", passengerList=" + passengerList +
-                '}';
+        return String.format("| CODE | %s  -- %25s -- %29s  -- %20s  --->  %-20s | ", code, flightDate, airline, from, to);
     }
 }
