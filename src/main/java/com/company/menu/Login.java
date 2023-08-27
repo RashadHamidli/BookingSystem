@@ -1,6 +1,7 @@
 package com.company.menu;
 
 import com.company.controllers.UserController;
+import com.company.database.DataBase;
 import com.company.entity.User;
 import com.company.util.PrintUtil;
 
@@ -39,6 +40,8 @@ public class Login {
                 }
                 case 6 -> {
                     System.out.println("System exit");
+                    DataBase dataBase=DataBase.getInstance();
+                    dataBase.getUsers().stream().forEach(System.out::println);
                     System.exit(0);
                 }
                 default -> System.out.println("emeliyyati duzgun daxil edin");

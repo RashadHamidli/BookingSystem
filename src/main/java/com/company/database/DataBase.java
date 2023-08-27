@@ -11,21 +11,22 @@ import java.util.List;
 
 public class DataBase {
 
-    private static final File flightsFile = new File("src/main/java/App/DataBase/DBFiles", "flights.txt");
-    private static final File bookingsFile = new File("src/main/java/App/DataBase/DBFiles", "bookings.txt");
-    private static final File usersFile = new File("src/main/java/App/DataBase/DBFiles", "users.txt");
+    private static final File flightsFile = new File("src/main/java/com/database", "flights.txt");
+    private static final File bookingsFile = new File("src/main/java/com/database", "bookings.txt");
+    private static final File usersFile = new File("src/main/java/com/database", "users.txt");
 
-    private final List<Booking> bookings = new ArrayList<>();
-    private final List<User> users = new ArrayList<>();
-    private final List<Flight> flights = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
+    private List<Flight> flights = new ArrayList<>();
 
     private static DataBase database;
-    private DataBase(){
+
+    private DataBase() {
     }
 
-    public static DataBase getInstance(){
-        if(database == null){
-            database =  new DataBase();
+    public static DataBase getInstance() {
+        if (database == null) {
+            database = new DataBase();
         }
         return database;
     }
@@ -42,36 +43,39 @@ public class DataBase {
         return flights;
     }
 
-    public void initDatabase(){
+    public void initDatabase() {
 
-        if(usersFile.exists()){
+        if (usersFile.exists()) {
             loadFileToList(usersFile, users);
+        } else {
+            System.out.println("else capa verildi");
         }
 
-        if(bookingsFile.exists()){
+        if (bookingsFile.exists()) {
             loadFileToList(bookingsFile, bookings);
+        } else {
+            System.out.println("else capa verildi");
         }
 
-        if(flightsFile.exists()){
+        if (flightsFile.exists()) {
             loadFileToList(flightsFile, flights);
-        }
-        else {
+        } else {
 //            flights.addAll(FlightGenerator.genFlights(50));
-            saveListToFile(flightsFile, flights);
+//            saveListToFile(flightsFile, flights);
             System.out.println("else capa verildi");
         }
     }
 
-    public void closeDatabase(){
+    public void closeDatabase() {
         saveListToFile(usersFile, users);
         saveListToFile(bookingsFile, bookings);
         saveListToFile(flightsFile, flights);
     }
 
 
-    private void saveListToFile(File file, List list){
+    private void saveListToFile(File file, List list) {
 
-        try{
+        try {
             file.getParentFile().mkdirs();
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -79,23 +83,23 @@ public class DataBase {
             oos.close();
             fos.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void loadFileToList(File file, List list){
+    private void loadFileToList(File file, List list) {
 
-        try{
+        try {
             FileInputStream fis = new FileInputStream(file);
-            if(fis.available() > 0){
+            if (fis.available() > 0) {
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 List data = (List) ois.readObject();
                 list.addAll(data);
                 ois.close();
                 fis.close();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
