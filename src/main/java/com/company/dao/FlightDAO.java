@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class FlightDAO implements DAO<Flight>{
-    private DataBase dataBase=new DataBase();
+    private DataBase dataBase=DataBase.getInstance();
     @Override
     public List<Flight> getAll() {
         return dataBase.getFlights();

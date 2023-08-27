@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookingDAO implements DAO<Booking> {
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = DataBase.getInstance();
 
     @Override
     public List<Booking> getAll() {
