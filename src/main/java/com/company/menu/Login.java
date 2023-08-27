@@ -4,7 +4,6 @@ import com.company.controllers.UserController;
 import com.company.entity.User;
 import com.company.util.PrintUtil;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Login {
@@ -30,10 +29,19 @@ public class Login {
             PrintUtil.userMenu();
             choice = scanner.nextInt();
             switch (choice) {
-                case 1 -> System.out.println("sifaris 1");
-                case 2 -> System.out.println("sifaris 2");
-                case 3 -> System.out.println("sifaris 3");
-                case 4 -> System.out.println("logout 4");
+                case 1 -> System.out.println("ucuslarin siyahisi gosterilecek");
+                case 2 -> System.out.println("ucus axtarilacaq");
+                case 3 -> System.out.println("sizin biletler burada olacaq");
+                case 4 -> System.out.println("bileti cancel edilecek");
+                case 5 -> {
+                    System.out.println("logout successfuly");
+                    login();
+                }
+                case 6 -> {
+                    System.out.println("System exit");
+                    System.exit(0);
+                }
+                default -> System.out.println("emeliyyati duzgun daxil edin");
             }
         }
     }

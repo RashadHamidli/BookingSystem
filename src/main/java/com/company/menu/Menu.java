@@ -18,7 +18,7 @@ public class Menu {
             switch (choice) {
                 case 1 -> {
                     login.login();
-                    if (login.b = true) {
+                    if (login.b == true) {
                         login.displayUserMenu();
                     }
                 }

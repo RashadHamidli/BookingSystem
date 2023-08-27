@@ -3,6 +3,7 @@ package com.company.entity;
 import java.util.Objects;
 
 public class Passenger {
+    private static final Long serialVersionUID = 1l;
     private int id;
     private static int idCount = 1;
     private String name;

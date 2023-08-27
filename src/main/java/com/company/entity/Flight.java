@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Flight implements Serializable {
+    private static final Long serialVersionUID = 1l;
     private int id;
     private static int idCount = 1;
     private int capacity;
