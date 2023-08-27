@@ -15,13 +15,14 @@ public class DataBase {
     private static final File bookingsFile = new File("src/main/java/com/database", "bookings.txt");
     private static final File usersFile = new File("src/main/java/com/database", "users.txt");
 
-    private List<Booking> bookings = new ArrayList<>();
-    private List<User> users = new ArrayList<>();
-    private List<Flight> flights = new ArrayList<>();
+    private final List<Booking> bookings = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
+    private final List<Flight> flights = new ArrayList<>();
 
     private static DataBase database;
 
     private DataBase() {
+
     }
 
     public static DataBase getInstance() {
@@ -47,22 +48,18 @@ public class DataBase {
 
         if (usersFile.exists()) {
             loadFileToList(usersFile, users);
-        } else {
-            System.out.println("else capa verildi");
         }
 
         if (bookingsFile.exists()) {
             loadFileToList(bookingsFile, bookings);
-        } else {
-            System.out.println("else capa verildi");
         }
 
         if (flightsFile.exists()) {
             loadFileToList(flightsFile, flights);
         } else {
+            System.out.println("file not found!..");
 //            flights.addAll(FlightGenerator.genFlights(50));
-//            saveListToFile(flightsFile, flights);
-            System.out.println("else capa verildi");
+            saveListToFile(flightsFile, flights);
         }
     }
 
@@ -104,44 +101,3 @@ public class DataBase {
         }
     }
 }
-//package com.company.database;
-//
-//import com.company.entity.Booking;
-//import com.company.entity.Flight;
-//import com.company.entity.User;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//
-//import java.io.*;
-//
-//public class DataBase {
-//    private List<User> users = new ArrayList<>();
-//    private List<Flight> flights = new ArrayList<>();
-//    private List<Booking> bookings = new ArrayList<>();
-//    private static final File usersFile = new File("C:\\com.company\\BookingSystem\\src\\main\\java\\com\\database", "users.txt");
-//
-//    private static DataBase database;
-//
-//    private DataBase() {
-//    }
-//
-//    public static DataBase getInstance() {
-//        if (database == null) {
-//            database = new DataBase();
-//        }
-//        return database;
-//    }
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public List<Flight> getFlights() {
-//        return flights;
-//    }
-//
-//    public List<Booking> getBookings() {
-//        return bookings;
-//    }
-//}

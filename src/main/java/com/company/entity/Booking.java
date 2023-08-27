@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Booking implements Serializable {
-    private static final Long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
     private int id;
     private static int idCount = 1;
     private User user;

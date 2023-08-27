@@ -1,9 +1,10 @@
 package com.company.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Passenger {
-    private static final Long serialVersionUID = 1l;
+public class Passenger implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int id;
     private static int idCount = 1;
     private String name;

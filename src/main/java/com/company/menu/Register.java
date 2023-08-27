@@ -1,6 +1,7 @@
 package com.company.menu;
 
 import com.company.controllers.UserController;
+import com.company.database.DataBase;
 import com.company.entity.User;
 import com.company.util.PrintUtil;
 
@@ -18,6 +19,8 @@ public class Register {
             System.out.println("register failed!");
         } else {
             System.out.println("Register successfuly");
+            DataBase dataBase = DataBase.getInstance();
+            dataBase.closeDatabase();
         }
 
     }

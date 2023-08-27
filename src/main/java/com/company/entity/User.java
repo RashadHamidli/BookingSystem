@@ -1,10 +1,13 @@
 package com.company.entity;
 
+import com.company.database.DataBase;
+
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class User implements Serializable {
-    private static final Long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
     private int id;
     private static int idCount = 1;
     private String userName;
@@ -12,7 +15,13 @@ public class User implements Serializable {
     private String surname;
     private String password;
 
+
     public User(String userName, String name, String surname, String password) {
+        List<User> users = DataBase.getInstance().getUsers();
+        int size =0;
+        for (User u : users) {
+            u.getId();
+        }
         this.id = idCount++;
         this.userName = userName;
         this.name = name;
