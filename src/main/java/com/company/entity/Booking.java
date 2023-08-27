@@ -1,16 +1,18 @@
 package com.company.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Booking {
+public class Booking implements Serializable {
     private int id;
     private static int idCount = 1;
     private User user;
     private Passenger passenger;
     private Flight flight;
     private LocalDateTime bookingDate;
-    private Booking(int id){
+
+    private Booking(int id) {
         this.id = id;
         this.user = user;
         this.passenger = passenger;

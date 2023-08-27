@@ -11,12 +11,17 @@ public class Menu {
 
         Login login = new Login();
         Register register = new Register();
-
-        while (true){
+        boolean b = true;
+        while (b) {
             PrintUtil.mainMenu();
             choice = scanner.nextInt();
             switch (choice) {
-                case 1 -> login.login();
+                case 1 -> {
+                    login.login();
+                    if (login.b = true) {
+                        login.displayUserMenu();
+                    }
+                }
                 case 2 -> register.userRegister();
                 case 3 -> System.exit(0);
                 default -> System.out.println("operation failed!");

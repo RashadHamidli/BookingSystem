@@ -14,14 +14,12 @@ public class DataBase {
     private static DataBase database;
     private DataBase(){
     }
-
     public static DataBase getInstance(){
         if(database == null){
             database =  new DataBase();
         }
         return database;
     }
-
     public List<User> getUsers() {
         return users;
     }

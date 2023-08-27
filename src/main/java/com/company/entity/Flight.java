@@ -1,10 +1,11 @@
 package com.company.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class Flight {
+public class Flight implements Serializable {
     private int id;
     private static int idCount = 1;
     private int capacity;
