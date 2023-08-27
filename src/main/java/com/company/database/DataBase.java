@@ -44,7 +44,7 @@ public class DataBase {
         return flights;
     }
 
-    public void initDatabase() {
+    public void readFileDatabase() {
 
         if (usersFile.exists()) {
             loadFileToList(usersFile, users);
@@ -62,7 +62,7 @@ public class DataBase {
         }
     }
 
-    public void closeDatabase() {
+    public void writeFileDatabase() {
         saveListToFile(usersFile, users);
         saveListToFile(bookingsFile, bookings);
         saveListToFile(flightsFile, flights);

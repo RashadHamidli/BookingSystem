@@ -22,7 +22,6 @@ public class User implements Serializable {
         for (User u : users) {
             size = u.getId();
         }
-        System.out.println(size);
         this.id = ++size;
         this.userName = userName;
         this.name = name;

@@ -13,10 +13,11 @@ public class PrintUtil {
     public static void userMenu() {
         System.out.println("1. View flights" +
                 "\n2. Search booking" +
-                "\n3. View booking list" +
-                "\n4. Cancel booking" +
-                "\n5. logout" +
-                "\n6. Exit");
+                "\n3. Make booking" +
+                "\n4. View booking list" +
+                "\n5. Cancel booking" +
+                "\n6. logout" +
+                "\n7. Exit");
     }
 
     public static String getText(String text) {
@@ -24,8 +25,9 @@ public class PrintUtil {
         System.out.printf("%s: ", text);
         return scanner.nextLine();
     }
-    public static int getNum(String text){
-        Scanner scanner=new Scanner(System.in);
+
+    public static int getNum(String text) {
+        Scanner scanner = new Scanner(System.in);
         System.out.printf("%s: ", text);
         return scanner.nextInt();
     }

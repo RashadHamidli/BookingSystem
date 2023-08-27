@@ -16,4 +16,8 @@ public class FlightController {
         return flightService.getFlight(code);
     }
 
+    public List<Flight> searchFligth(String from, String to) {
+        return flightService.searchFlight(from, to);
+    }
+
 }

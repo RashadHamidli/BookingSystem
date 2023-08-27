@@ -20,7 +20,7 @@ public class Register {
         } else {
             System.out.println("Register successfuly");
             DataBase dataBase = DataBase.getInstance();
-            dataBase.closeDatabase();
+            dataBase.writeFileDatabase();
         }
 
     }
