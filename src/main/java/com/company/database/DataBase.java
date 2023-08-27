@@ -3,40 +3,73 @@ package com.company.database;
 import com.company.entity.Booking;
 import com.company.entity.Flight;
 import com.company.entity.User;
-import com.company.exceptions.MyException;
+import com.company.util.FlightGenerator;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-
 public class DataBase {
-    private List<User> users = new ArrayList<>();
-    private List<Flight> flights = new ArrayList<>();
-    private List<Booking> bookings = new ArrayList<>();
-    private static final File usersFile = new File("C:\\com.company\\BookingSystem\\src\\main\\java\\com\\database", "users.txt");
+
+    private static final File flightsFile = new File("src/main/java/App/DataBase/DBFiles", "flights.txt");
+    private static final File bookingsFile = new File("src/main/java/App/DataBase/DBFiles", "bookings.txt");
+    private static final File usersFile = new File("src/main/java/App/DataBase/DBFiles", "users.txt");
+
+    private final List<Booking> bookings = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
+    private final List<Flight> flights = new ArrayList<>();
 
     private static DataBase database;
-
-    private DataBase() {
+    private DataBase(){
     }
 
-    public static DataBase getInstance() {
-        if (database == null) {
-            database = new DataBase();
+    public static DataBase getInstance(){
+        if(database == null){
+            database =  new DataBase();
         }
         return database;
     }
-    public void read(){
-        readToFile(usersFile, users);
+
+    public List<Booking> getBookings() {
+        return bookings;
     }
-    public void write(){
-        writeToFile(usersFile, users);
+
+    public List<User> getUsers() {
+        return users;
     }
-    private void writeToFile(File file, List list){
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void initDatabase(){
+
+        if(usersFile.exists()){
+            loadFileToList(usersFile, users);
+        }
+
+        if(bookingsFile.exists()){
+            loadFileToList(bookingsFile, bookings);
+        }
+
+        if(flightsFile.exists()){
+            loadFileToList(flightsFile, flights);
+        }
+        else {
+//            flights.addAll(FlightGenerator.genFlights(50));
+            saveListToFile(flightsFile, flights);
+            System.out.println("else capa verildi");
+        }
+    }
+
+    public void closeDatabase(){
+        saveListToFile(usersFile, users);
+        saveListToFile(bookingsFile, bookings);
+        saveListToFile(flightsFile, flights);
+    }
+
+
+    private void saveListToFile(File file, List list){
 
         try{
             file.getParentFile().mkdirs();
@@ -51,7 +84,7 @@ public class DataBase {
         }
     }
 
-    private void readToFile(File file, List list){
+    private void loadFileToList(File file, List list){
 
         try{
             FileInputStream fis = new FileInputStream(file);
@@ -66,80 +99,45 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
-    public Object readFile(String fileName) throws FileNotFoundException {
-        Object obj = null;
-        FileInputStream fileInputStream = new FileInputStream(fileName);
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            obj = objectInputStream.readObject();
-        } finally {
-            return obj;
-        }
-    }
-
-    public void writeFile(Serializable object, String name) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(name);
-             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            objectOutputStream.writeObject(object);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    //    public void saveToFile() {
-//        try (FileChannel channel = new RandomAccessFile(files, "rw").getChannel()) {
-//            ByteBuffer buffer = ByteBuffer.allocate(1024);
-//            String data = serializeDataBase(this);
-//
-//            buffer.put(data.getBytes());
-//            buffer.flip();
-//            channel.write(buffer);
-//            System.out.println("Verilənlər fayla yazıldı. Fayl yolu: " + files.getPath());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public DataBase loadFromFile() {
-//        try (FileChannel channel = new RandomAccessFile(files, "r").getChannel()) {
-//            ByteBuffer buffer = ByteBuffer.allocate((int) channel.size());
-//            channel.read(buffer);
-//            buffer.flip();
-//
-//            String readData = new String(buffer.array());
-//            return deserializeDataBase(readData);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-//
-//    public void save() {
-//        saveToFile();
-//    }
-//
-//    public DataBase load() {
-//        return loadFromFile();
-//    }
-//
-//    private String serializeDataBase(DataBase database) {
-//        return "";
-//    }
-//
-//    private DataBase deserializeDataBase(String data) {
-//        return DataBase.getInstance();
-//    }
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public List<Flight> getFlights() {
-        return flights;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
 }
+//package com.company.database;
+//
+//import com.company.entity.Booking;
+//import com.company.entity.Flight;
+//import com.company.entity.User;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//
+//import java.io.*;
+//
+//public class DataBase {
+//    private List<User> users = new ArrayList<>();
+//    private List<Flight> flights = new ArrayList<>();
+//    private List<Booking> bookings = new ArrayList<>();
+//    private static final File usersFile = new File("C:\\com.company\\BookingSystem\\src\\main\\java\\com\\database", "users.txt");
+//
+//    private static DataBase database;
+//
+//    private DataBase() {
+//    }
+//
+//    public static DataBase getInstance() {
+//        if (database == null) {
+//            database = new DataBase();
+//        }
+//        return database;
+//    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public List<Flight> getFlights() {
+//        return flights;
+//    }
+//
+//    public List<Booking> getBookings() {
+//        return bookings;
+//    }
+//}

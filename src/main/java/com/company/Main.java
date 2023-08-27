@@ -6,9 +6,9 @@ import com.company.menu.Menu;
 public class Main {
     public static void main(String[] args) {
         DataBase dataBase = DataBase.getInstance();
-        dataBase.read();
+        dataBase.initDatabase();
         Menu menu = new Menu();
         menu.displayMenu();
-        dataBase.write();
+        dataBase.closeDatabase();
     }
 }
