@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Flight implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -16,11 +17,15 @@ public class Flight implements Serializable {
     private Airport to;
     private LocalDateTime flightDate;
     private List<Passenger> passengerList;
+    private boolean th;
+
+    public Flight() {
+    }
 
     public Flight(int capacity, String code, Airline airline, Airport from, Airport to, LocalDateTime flightDate, List<Passenger> passengerList) {
         this.id = idCount++;
         this.capacity = capacity;
-        this.code = code;
+        this.code = genCode();
         this.airline = airline;
         this.from = from;
         this.to = to;
@@ -80,5 +85,15 @@ public class Flight implements Serializable {
     @Override
     public String toString() {
         return String.format("| CODE | %s  -- %25s -- %29s  -- %20s  --->  %-20s | ", code, flightDate, airline, from, to);
+    }
+
+    private String genCode() {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        sb.append(random.nextInt(10, 99));
+        sb.append(this.airline.toString().charAt(0));
+        sb.append(this.from.toString().charAt(0));
+        sb.append(this.to.toString().charAt(0));
+        return sb.toString();
     }
 }

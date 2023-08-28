@@ -13,7 +13,7 @@ public class Booking implements Serializable {
     private Flight flight;
     private LocalDateTime bookingDate;
 
-    private Booking(int id) {
+    public Booking(Flight flight,User user) {
         this.id = id;
         this.user = user;
         this.passenger = passenger;
@@ -28,6 +28,7 @@ public class Booking implements Serializable {
         this.flight = flight;
         this.bookingDate = bookingDate;
     }
+
 
     public int getId() {
         return id;

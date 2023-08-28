@@ -38,6 +38,7 @@ public class FlightGenerator {
     }
 
     public static List<Flight> genFlights(int times) {
+        Flight flight = new Flight();
         List<Flight> flights = new ArrayList<>();
         for (int i = 0; i < times; i++) {
             int capacity = genCapacity();
@@ -45,7 +46,7 @@ public class FlightGenerator {
             Airline airline = genAirline();
             Airport from = genAirpot();
             Airport to = genAirpot();
-            flights.add(new Flight(capacity, null, airline, from, to, dateTime, null));
+            flights.add(new Flight(capacity, flight.getCode(), airline, from, to, dateTime, null));
         }
         return flights;
     }

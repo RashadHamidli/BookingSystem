@@ -38,13 +38,22 @@ public class Login {
             switch (choice) {
                 case 1 -> flights.forEach(System.out::println);
                 case 2 -> book.searchFlight().forEach(System.out::println);
-                case 3 -> book.makeBooking(user);
-                case 4 -> System.out.println("bileti cancel edilecek");
-                case 5 -> {
+                case 3 -> {
+                    System.out.println("enter the flight code");
+                    String code = scanner.nextLine();
+                    book.makeBooking(user, code);
+                }
+                case 4 -> {
+                    book.showBooking(user);
+                    DataBase dataBase = DataBase.getInstance();
+                    dataBase.getBookings().stream().forEach(System.out::println);
+                }
+                case 5 -> book.cancelBooking(user.getId());
+                case 6 -> {
                     System.out.println("logout successfuly");
                     login();
                 }
-                case 6 -> {
+                case 7 -> {
                     System.out.println("System exit");
                     DataBase dataBase = DataBase.getInstance();
                     dataBase.getUsers().stream().forEach(System.out::println);

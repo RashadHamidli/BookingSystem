@@ -14,7 +14,7 @@ public class Register {
         String surname = PrintUtil.getText("Enter surname");
         String password = PrintUtil.getText("Enter password");
 
-        boolean registered = userController.userRegister(new User(userName, name, surname, password));
+        boolean registered = userController.userRegister(new User(userName, name, surname, password, null));
         if (!registered) {
             System.out.println("register failed!");
         } else {
