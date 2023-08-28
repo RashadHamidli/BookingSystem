@@ -4,7 +4,6 @@ import com.company.entity.Airline;
 import com.company.entity.Airport;
 import com.company.entity.Flight;
 
-import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;

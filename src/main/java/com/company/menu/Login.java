@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class Login {
     UserController userController = new UserController();
-    boolean b = false;
 
     public void login() {
         String userName = PrintUtil.getText("Enter username");
@@ -21,7 +20,6 @@ public class Login {
             System.out.println("login failed!");
         } else {
             System.out.println("login successfull\nWelcome " + user.getName() + " " + user.getSurname());
-            b = true;
             displayUserMenu(user);
         }
     }
