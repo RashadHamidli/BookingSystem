@@ -8,7 +8,7 @@ import com.company.util.FlightGenerator;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         DataBase dataBase = DataBase.getInstance();
         dataBase.readFileDatabase();
         Menu menu = new Menu();

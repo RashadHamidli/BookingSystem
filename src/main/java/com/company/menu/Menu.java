@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-    public void displayMenu() {
+    public void displayMenu() throws Exception {
         DataBase db = DataBase.getInstance();
         List<User> users = db.getUsers();
         List<Flight> flights = db.getFlights();

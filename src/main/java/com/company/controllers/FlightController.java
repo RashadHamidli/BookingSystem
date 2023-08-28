@@ -1,6 +1,7 @@
 package com.company.controllers;
 
 import com.company.entity.Flight;
+import com.company.entity.Passenger;
 import com.company.services.FlightService;
 
 import java.util.List;

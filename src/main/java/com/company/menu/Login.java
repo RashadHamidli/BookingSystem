@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Login {
     UserController userController = new UserController();
 
-    public void login() {
+    public void login() throws Exception {
         String userName = PrintUtil.getText("Enter username");
         String password = PrintUtil.getText("Enter password");
         User user = userController.getUser(userName, password);
@@ -24,7 +24,7 @@ public class Login {
         }
     }
 
-    public void displayUserMenu(User user) {
+    public void displayUserMenu(User user) throws Exception {
         DataBase db = DataBase.getInstance();
         List<Flight> flights = db.getFlights();
         Book book = new Book();
@@ -39,14 +39,14 @@ public class Login {
                 case 3 -> {
                     System.out.println("enter the flight code");
                     String code = scanner.nextLine();
-                    book.makeBooking(user, code);
+                    book.makeBooking(user);
                 }
                 case 4 -> {
                     book.showBooking(user);
                     DataBase dataBase = DataBase.getInstance();
                     dataBase.getBookings().stream().forEach(System.out::println);
                 }
-                case 5 -> book.cancelBooking(user.getId());
+                case 5 -> book.cancelBooking(user);
                 case 6 -> {
                     System.out.println("logout successfuly");
                     login();

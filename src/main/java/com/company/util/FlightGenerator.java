@@ -43,7 +43,7 @@ public class FlightGenerator {
             Airline airline = genAirline();
             Airport from = genAirpot();
             Airport to = genAirpot();
-            flights.add(new Flight(capacity, airline, from, to, dateTime, null));
+            flights.add(new Flight(capacity, airline, from, to, dateTime, new ArrayList<>()));
         }
         return flights;
     }
