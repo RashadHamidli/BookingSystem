@@ -23,14 +23,7 @@ public class Menu {
             PrintUtil.mainMenu();
             choice = scanner.nextInt();
             switch (choice) {
-                case 1 -> {
-                    login.login();
-//                    if (login.b == true) {
-////                        users.clear();
-////                        db.writeFileDatabase();
-//                        login.displayUserMenu(user);
-//                    }
-                }
+                case 1 -> login.login();
                 case 2 -> register.userRegister();
                 case 3 -> flights.forEach(System.out::println);
                 case 4 -> System.exit(0);

@@ -13,6 +13,7 @@ public class Main {
         dataBase.readFileDatabase();
         Menu menu = new Menu();
         menu.displayMenu();
+
 //        List<Flight> flights = FlightGenerator.genFlights(50);
 //        flights.forEach(System.out::println);
 

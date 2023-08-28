@@ -19,10 +19,7 @@ public class Flight implements Serializable {
     private List<Passenger> passengerList;
     private boolean th;
 
-    public Flight() {
-    }
-
-    public Flight(int capacity, String code, Airline airline, Airport from, Airport to, LocalDateTime flightDate, List<Passenger> passengerList) {
+    public Flight(int capacity, Airline airline, Airport from, Airport to, LocalDateTime flightDate, List<Passenger> passengerList) {
         this.id = idCount++;
         this.capacity = capacity;
         this.code = genCode();

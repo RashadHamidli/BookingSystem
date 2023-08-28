@@ -27,7 +27,6 @@ public class FlightGenerator {
     public static Airport genAirpot() {
         return Airport.values()[random.nextInt(Airport.values().length)];
     }
-
     public static LocalDateTime genTime() {
         long minDay = LocalDate.of(2023, 9, 1).toEpochDay();
         long maxDay = LocalDate.of(2023, 12, 31).toEpochDay();
@@ -38,7 +37,6 @@ public class FlightGenerator {
     }
 
     public static List<Flight> genFlights(int times) {
-        Flight flight = new Flight();
         List<Flight> flights = new ArrayList<>();
         for (int i = 0; i < times; i++) {
             int capacity = genCapacity();
@@ -46,7 +44,7 @@ public class FlightGenerator {
             Airline airline = genAirline();
             Airport from = genAirpot();
             Airport to = genAirpot();
-            flights.add(new Flight(capacity, flight.getCode(), airline, from, to, dateTime, null));
+            flights.add(new Flight(capacity, airline, from, to, dateTime, null));
         }
         return flights;
     }
