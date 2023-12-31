@@ -1,5 +1,0 @@
-package com.company.entity;
-
-public enum Airline {
-    AZAL, TURKISH_AIRLIENS, FLY_DUBAI, AEROFLOT, PEGASUS, WIZZAIR, QATAR_AIRWAYS, LUTFHANSA, UIA, AIRBALTIC;
-}
